@@ -1,0 +1,30 @@
+@textAlign: center;
+@datePadding: 15px;
+
+.dateHeadingStyle {
+  float: left;
+  font-size: 24px;
+  text-align: @textAlign;
+  color: black;
+  padding: @datePadding;
+}
+.dateHideShowStyle {
+  float: right;
+  font-weight: normal;
+  color: #1890ff;
+  text-align: @textAlign;
+  padding: @datePadding;
+}
+
+.MainRow {
+  margin-top: 8rem;
+}
+.heading {
+  font-weight: bolder;
+  .dateHeadingStyle();
+}
+
+.dateRight {
+  .dateHideShowStyle();
+}
+
