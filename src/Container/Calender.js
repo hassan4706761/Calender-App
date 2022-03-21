@@ -42,8 +42,6 @@ const Calender = (props) => {
   }, []);
   console.log(datesData);
 
-  // console.log(datesData);
-
   return (
     <>
       <Row className="MainRow">
