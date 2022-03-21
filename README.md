@@ -39,3 +39,4 @@ Your app is ready to be deployed!
 | slidesToScroll  | how many card to skips to move forward or backward when the carouel scrolls  | number  | 1  |
 | dots  | dots at the bottom of the carousal   | boolean  | false  |
 | speed  | how quickly the carousel swipes  | number  | 300  |
+| infinite  | either the carousel should start automaticaly after it reacher last card without freezing the arrows or it should stop at last card  | boolean  | false  |
