@@ -6,24 +6,24 @@ import {
   MinusCircleOutlined,
   PlusCircleOutlined,
 } from "@ant-design/icons";
-import TImePickerDropdown from "../Components/TImePickerDropdown";
+import TimePickerDropdown from "../Components/TimePickerDropdown";
 
 const { Paragraph } = Typography;
 
 const Booking = () => {
-  const [pickTime, setPickTime] = useState("00:00");
-  const [duration, setDuration] = useState("00:00");
+  const [eventTime, setEventTIme] = useState("00:00");
+  const [eventDuration, setEventDuration] = useState("00:00");
   const [durationInHours, setDurationInHours] = useState(0);
   const [durationInMinutes, setDurationInMinutes] = useState(0);
 
-  function handleTimeChange(time) {
+  function handleEventTimeChange(time) {
     const timeFormat = moment(time).format("HH:mm");
-    setPickTime(timeFormat);
+    setEventTIme(timeFormat);
   }
 
   function handleDurationChange(time) {
     const timing = moment(time).format("HH:mm");
-    setDuration(timing);
+    setEventDuration(timing);
     const timeSplit = timing.split(":");
     setDurationInHours(Number(timeSplit[0]));
     setDurationInMinutes(Number(timeSplit[1]));
@@ -47,14 +47,12 @@ const Booking = () => {
     <div>
       <Row>
         <Col span={24}>
-          <Paragraph className="headingShow" style={{ userSelect: "none" }}>
-            Time
-          </Paragraph>
+          <Paragraph className="headingShow">Time</Paragraph>
           <Row className="timePicker">
-            <TImePickerDropdown
-              defaultValue={moment(pickTime, "HH:mm")}
-              value={moment(pickTime, "HH:mm")}
-              onChange={(time) => handleTimeChange(time)}
+            <TimePickerDropdown
+              defaultValue={moment(eventTime, "HH:mm")}
+              value={moment(eventTime, "HH:mm")}
+              onChange={(time) => handleEventTimeChange(time)}
             />
             <DownOutlined style={{ fontSize: "20px", marginTop: "7px" }} />
           </Row>
@@ -62,16 +60,14 @@ const Booking = () => {
       </Row>
       <Row>
         <Col span={24}>
-          <Paragraph className="headingShow" style={{ userSelect: "none" }}>
-            Duration
-          </Paragraph>
+          <Paragraph className="headingShow">Duration</Paragraph>
           <Row className="timePicker">
             <PlusCircleOutlined
               onClick={handleIncreaseDuration}
               style={{ fontSize: "24px" }}
             />
-            <TImePickerDropdown
-              defaultValue={moment(duration, "HH:mm")}
+            <TimePickerDropdown
+              defaultValue={moment(eventDuration, "HH:mm")}
               value={moment(`${durationInHours}:${durationInMinutes}`, "HH:mm")}
               format={"HH:mm"}
               onChange={(time) => handleDurationChange(time)}

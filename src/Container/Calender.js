@@ -18,9 +18,6 @@ const Calender = (props) => {
   const dateSetter = () => {
     const begin = moment(startDate); //today's date
     const end = moment(endDate); // another date
-    const difference = moment.duration(end.diff(begin));
-    const gap = difference.asDays();
-    console.log(gap);
 
     const dateRange = [];
     while (end.diff(begin, "days") >= 0) {
@@ -40,39 +37,27 @@ const Calender = (props) => {
   useEffect(() => {
     dateSetter();
   }, []);
-  console.log(datesData);
 
   return (
     <>
-      <Row className="MainRow">
+      <Row className="mainRow">
         <Col offset={7} span={10}>
-          <Row style={{ marginBottom: "-30px" }}>
+          <Row className="secondRow">
             <Col span={24}>
-              <Paragraph className="heading" style={{ userSelect: "none" }}>
-                Date
-              </Paragraph>
+              <Paragraph className="heading">Date</Paragraph>
               <Row className="dateRight">
                 <Space>
-                  <Paragraph
-                    style={{
-                      paddingRight: "5px",
-                      fontSize: "20px",
-                      marginBottom: "5px",
-                      userSelect: "none",
-                    }}
-                  >
-                    {displayDate}
-                  </Paragraph>
+                  <Paragraph className="display-date">{displayDate}</Paragraph>
 
                   {show ? (
                     <DownOutlined
                       onClick={() => setShow((a) => !a)}
-                      style={{ fontSize: "20px" }}
+                      className="outlined-icon"
                     />
                   ) : (
                     <UpOutlined
                       onClick={() => setShow((a) => !a)}
-                      style={{ fontSize: "20px" }}
+                      className="outlined-icon"
                     />
                   )}
                 </Space>

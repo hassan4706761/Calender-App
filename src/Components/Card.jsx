@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/card.less";
+import "../Styles/Card.less";
 import { Card, Col, Row, Typography } from "antd";
 import moment from "moment";
 
@@ -24,17 +24,13 @@ const DateCard = ({
             !disabled
               ? () =>
                   setDisplayDate(
-                    `${moment(displayDateValue).format("D")}. ${moment(
-                      displayDateValue
-                    ).format("MMMM")} ${moment(displayDateValue).format(
-                      "YYYY"
-                    )}`
+                    moment(displayDateValue).format("DD MMMM YYYY")
                   )
               : null
           }
         >
-          <Title style={{ marginBottom: "3px" }}>{date}</Title>
-          <Paragraph style={{ fontSize: "20px" }}>
+          <Title className="card-date">{date}</Title>
+          <Paragraph className="card-day">
             {disabled ? "Closed" : day}
           </Paragraph>
         </Card>

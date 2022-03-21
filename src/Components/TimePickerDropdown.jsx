@@ -1,13 +1,19 @@
 import React from "react";
 import { TimePicker } from "antd";
+import "../Styles/TimePicker.less";
 
-const TImePickerDropdown = ({ defaultValue, value, onChange }) => {
+const TimePickerDropdown = ({
+  defaultValue,
+  value,
+  onChange,
+  format = "HH:mm",
+}) => {
   return (
     <TimePicker
-      style={{ width: "60px", userSelect: "none" }}
+      className="time-picker"
       defaultValue={defaultValue}
       value={value}
-      format={"HH:mm"}
+      format={format}
       onChange={onChange}
       suffixIcon={null}
       clearIcon={null}
@@ -15,4 +21,4 @@ const TImePickerDropdown = ({ defaultValue, value, onChange }) => {
     />
   );
 };
-export default TImePickerDropdown;
+export default TimePickerDropdown;

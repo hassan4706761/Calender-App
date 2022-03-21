@@ -2,7 +2,7 @@ import React from "react";
 import { Carousel } from "antd";
 import "../Styles/Carousel.less";
 
-const SampleNextArrow = (props) => {
+const NextArrow = (props) => {
   const { className, style, onClick } = props;
   return (
     <div
@@ -13,7 +13,7 @@ const SampleNextArrow = (props) => {
   );
 };
 
-const SamplePrevArrow = (props) => {
+const PrevArrow = (props) => {
   const { className, style, onClick } = props;
   return (
     <div
@@ -23,29 +23,29 @@ const SamplePrevArrow = (props) => {
     />
   );
 };
+const responsive = [
+  {
+    breakpoint: 1260,
+    settings: {
+      slidesToShow: 2,
+      slidesToScroll: 2,
+    },
+  },
 
-const CarouselComponent = (props) => {
-  const children = props.children;
+  {
+    breakpoint: 680,
+    settings: {
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    },
+  },
+];
+
+const CarouselComponent = ({ children }) => {
   const settings = {
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1260,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        },
-      },
-
-      {
-        breakpoint: 680,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    responsive: responsive,
   };
   return (
     <Carousel
