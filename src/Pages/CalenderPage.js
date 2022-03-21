@@ -1,11 +1,12 @@
 import React from "react";
 import Calender from "../Container/Calender";
+import moment from "moment";
 
 const CalenderPage = () => {
-  const startDate = "2022-03-01";
-  const endDate = "2022-03-25";
+  const startDate = moment("2022-03-01");
+  const endDate = moment("2022-03-25");
   const disabledDates = [
-    "2022-03-19",
+    "2022-03-05",
     "2022-03-18",
     "2022-03-21",
     "2022-03-24",

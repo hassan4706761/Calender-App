@@ -11,6 +11,7 @@ const { Paragraph } = Typography;
 
 const Calender = (props) => {
   const { startDate, endDate, disabledDates } = props;
+  const [displayDate, setDisplayDate] = useState("Today");
   const [datesData, setDatesData] = useState([]);
   const [show, setShow] = useState(true);
 
@@ -20,24 +21,26 @@ const Calender = (props) => {
     const difference = moment.duration(end.diff(begin));
     const gap = difference.asDays();
     console.log(gap);
+
     const dateRange = [];
-    for (let i = 0; i < gap; i += 1) {
+    while (end.diff(begin, "days") >= 0) {
       const isDisabled = !!disabledDates.includes(begin.format("YYYY-MM-DD"));
       dateRange.push({
         date: begin.format("YYYY-MM-DD"),
         day: begin.format("D"),
         dayOfWeek: begin.format("dddd"),
         month: begin.format("MMMM"),
-        // disabled: isDisabled,
+        disabled: isDisabled,
       });
       begin.add(1, "days");
     }
     return setDatesData(dateRange);
   };
+
   useEffect(() => {
     dateSetter();
-    console.log(datesData);
   }, []);
+  console.log(datesData);
 
   // console.log(datesData);
 
@@ -60,7 +63,7 @@ const Calender = (props) => {
                       userSelect: "none",
                     }}
                   >
-                    Today
+                    {displayDate}
                   </Paragraph>
 
                   {show ? (
@@ -82,12 +85,17 @@ const Calender = (props) => {
             <Col span={24}>
               {show ? (
                 <Carousel>
-                  <DateCard />
-                  <DateCard />
-                  <DateCard />
-                  <DateCard />
-                  <DateCard />
-                  <DateCard />
+                  {datesData?.map((item, index) => (
+                    <DateCard
+                      key={index}
+                      title={item?.month}
+                      date={item.day}
+                      day={item.dayOfWeek}
+                      disabled={item.disabled}
+                      setDisplayDate={setDisplayDate}
+                      displayDateValue={item.date}
+                    />
+                  ))}
                 </Carousel>
               ) : (
                 <Booking />
