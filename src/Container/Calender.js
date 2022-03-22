@@ -5,22 +5,23 @@ import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import moment from "moment";
 import Carousel from "../Components/Carousel";
 import Booking from "./Booking";
+import PropTypes from "prop-types";
 
 
 const { Paragraph } = Typography;
 
-const Calender = ( { startDate, endDate, disabledDates } ) => {
+const Calender = (props) => {
   const [displayDate, setDisplayDate] = useState("Today");
   const [datesData, setDatesData] = useState([]);
   const [show, setShow] = useState(true);
 
   const dateSetter = () => {
-    const begin = moment(startDate); //today's date
-    const end = moment(endDate); // another date
+    const begin = moment(props.startDate); //today's date
+    const end = moment(props.endDate); // another date
 
     const dateRange = [];
     while (end.diff(begin, "days") >= 0) {
-      const isDisabled = !!disabledDates.includes(begin.format("YYYY-MM-DD"));
+      const isDisabled = !!props.disabledDates.includes(begin.format("YYYY-MM-DD"));
       dateRange.push({
         date: begin.format("YYYY-MM-DD"),
         day: begin.format("D"),
@@ -89,4 +90,23 @@ const Calender = ( { startDate, endDate, disabledDates } ) => {
     </>
   );
 };
+
+Calender.propTypes = {
+  startDate: PropTypes.string,
+  endDate: PropTypes.string,
+  disabledDates: PropTypes.array,
+
+};
+Calender.defaultProps = {
+  startDate :"2022-03-03",
+  endDate: "2022-03-25",
+  disabledDates : [
+    "2022-03-05",
+    "2022-03-18",
+    "2022-03-21",
+    "2022-03-24",
+    "2022-03-27",
+  ]
+};
+
 export default Calender;
