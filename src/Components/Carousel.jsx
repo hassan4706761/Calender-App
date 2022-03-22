@@ -1,6 +1,6 @@
 import React from "react";
 import { Carousel } from "antd";
-import "../Styles/Carousel.less";
+
 
 const NextArrow = (props) => {
   const { className, style, onClick } = props;

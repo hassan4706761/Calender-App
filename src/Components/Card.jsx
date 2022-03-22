@@ -1,7 +1,7 @@
 import React from "react";
-import "../Styles/Card.less";
 import { Card, Col, Row, Typography } from "antd";
 import moment from "moment";
+
 
 const { Title, Paragraph } = Typography;
 const DateCard = ({

@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Col, Row, Typography, Space } from "antd";
 import DateCard from "../Components/Card";
-import "../Styles/Calender.less";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import moment from "moment";
 import Carousel from "../Components/Carousel";
 import Booking from "./Booking";
 
+
 const { Paragraph } = Typography;
 
-const Calender = (props) => {
-  const { startDate, endDate, disabledDates } = props;
+const Calender = ( { startDate, endDate, disabledDates } ) => {
   const [displayDate, setDisplayDate] = useState("Today");
   const [datesData, setDatesData] = useState([]);
   const [show, setShow] = useState(true);

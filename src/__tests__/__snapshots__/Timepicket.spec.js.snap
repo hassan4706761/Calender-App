@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`My Test Suite My Test Case 1`] = `ShallowWrapper {}`;
+
+exports[`date selector rendering check dom tree rendering 1`] = `ShallowWrapper {}`;

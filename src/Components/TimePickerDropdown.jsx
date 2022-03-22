@@ -1,6 +1,6 @@
 import React from "react";
 import { TimePicker } from "antd";
-import "../Styles/TimePicker.less";
+
 
 const TimePickerDropdown = ({
   defaultValue,
