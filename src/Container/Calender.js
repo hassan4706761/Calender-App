@@ -67,7 +67,7 @@ const Calender = (props) => {
           <Row>
             <Col span={24}>
               {show ? (
-                <Carousel>
+                <Carousel >
                   {datesData?.map((item, index) => (
                     <DateCard
                       key={index}
@@ -95,8 +95,7 @@ Calender.propTypes = {
   startDate: PropTypes.string,
   endDate: PropTypes.string,
   disabledDates: PropTypes.array,
-
-};
+ };
 Calender.defaultProps = {
   startDate :"2022-03-03",
   endDate: "2022-03-25",
@@ -106,7 +105,7 @@ Calender.defaultProps = {
     "2022-03-21",
     "2022-03-24",
     "2022-03-27",
-  ]
+  ],
 };
 
 export default Calender;

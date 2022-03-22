@@ -1,5 +1,7 @@
 import React from "react";
 import { Carousel } from "antd";
+import PropTypes from "prop-types";
+import Calender from "../Container/Calender";
 
 
 const NextArrow = (props) => {
@@ -41,7 +43,8 @@ const responsive = [
   },
 ];
 
-const CarouselComponent = ({ children }) => {
+const CarouselComponent = (props) => {
+
   const settings = {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
@@ -49,20 +52,42 @@ const CarouselComponent = ({ children }) => {
   };
   return (
     <Carousel
-      arrows={true}
+      arrows={props.arrows}
       {...settings}
       autoplay
-      infinite={false}
-      pauseOnHover={true}
-      slidesToShow={3}
-      slidesToScroll={1}
-      speed={300}
-      dots={false}
+      infinite={props.infinite}
+      pauseOnHover={props.pauseOnHover}
+      slidesToShow={props.slidesToShow}
+      slidesToScroll={props.slidesToScroll}
+      speed={props.speed}
+      dots={props.dots}
       draggable
       swipeToSlide
     >
-      {children}
+      {props.children}
     </Carousel>
   );
 };
+CarouselComponent.propTypes = {
+
+  arrows: PropTypes.bool,
+  pauseOnHover:PropTypes.bool,
+  slidesToShow:PropTypes.number,
+  slidesToScroll:PropTypes.number,
+  dots:PropTypes.bool,
+  speed:PropTypes.number,
+  infinite:PropTypes.bool,
+
+};
+CarouselComponent.defaultProps = {
+
+  arrows:true,
+  pauseOnHover:true,
+  slidesToShow:3,
+  slidesToScroll:1,
+  dots:false,
+  speed:300,
+  infinite:false
+};
+
 export default CarouselComponent;
